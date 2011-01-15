@@ -22,7 +22,7 @@ let decomment ib =
   and endblock i = match B.nth ib i with
     | '/' -> next accept i
     | _ -> next block (i-1) (* "... condemned to repeat it." *)
-  in if l <> 0 then next accept (-1) else ob
+  in next accept (-1)
 
 let rec spool b =
   if (try (B.add_string b (input_line stdin); true) with End_of_file -> false)
